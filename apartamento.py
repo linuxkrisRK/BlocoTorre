@@ -54,20 +54,25 @@ class Apartamento(Torre):
     def torre(self, torre_nome):
         self.__torre = torre_nome
 
-    def imprimir_apartamento(self):
-        return f' Id: {self.id}'
-
     def imprimir(self):
-        if self.proximo is None:
-            return f'TORRE: {self.torre.imprimir()} \n' \
-                   f'APARTAMENTO Id: {self.id} || Numero: {self.numero} ||  Vaga: {self.vaga} ' \
-                   f'|| Proximo Apartamento: Nenhum ainda!'
-
         return f'TORRE: {self.torre.imprimir()} \n' \
-               f'APARTAMENTO Id: {self.id} || Numero: {self.numero} ||  Vaga: {self.vaga} ' \
-               f'|| Proximo Apartamento: {self.proximo.imprimir_apartamento()}'
+                f'APARTAMENTO Id: {self.id} || Numero: {self.numero} ||  Vaga: {self.vaga}'
 
     def cadastrar(self, torre, vaga, proximo):
         self.vaga = vaga
         self.torre = torre
         self.proximo = proximo
+
+    def atualizar_proximo(self, k):
+        self.proximo = k
+
+    def imprimir_apartamento(self):
+        return f' Número: {self.numero}'
+
+    def fila(self):
+        if self == self.proximo:
+            k = 'Nenhum'
+        k = self.proximo.imprimir_apartamento()
+        return f'Torre: {self.torre.nome} \n' \
+               f'Apartamento {self.numero}\n' \
+               f'Próximo Apartamento {k}'

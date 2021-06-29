@@ -13,6 +13,7 @@ print(torre1.imprimir())
 torre2 = Torre()
 torre2.cadastrar('Bloco B', 'Rua Coronel, 65')
 print(torre2.imprimir())
+print('\n')
 # =====================================================================================================================
 
 # =====================================================================================================================
@@ -41,16 +42,24 @@ apartamento5 = Apartamento()
 apartamento5.cadastrar(torre2, '22', apartamento4)
 print(apartamento5.imprimir())
 print('\n')
+
+# =======================================================================
+# Atualizando os próximos apartamento na fila
+apartamento2.atualizar_proximo(apartamento3)
+apartamento3.atualizar_proximo(apartamento4)
+apartamento4.atualizar_proximo(apartamento5)
+apartamento5.atualizar_proximo(apartamento5)
+
 # =====================================================================================================================
 
 # =====================================================================================================================
 # Fila
 # Adicionar as vagas na fila
 fila = Queue()
-fila.adicionar(apartamento2.imprimir())
-fila.adicionar(apartamento3.imprimir())
-fila.adicionar(apartamento4.imprimir())
-fila.adicionar(apartamento5.imprimir())
+fila.adicionar(apartamento2.fila())
+fila.adicionar(apartamento3.fila())
+fila.adicionar(apartamento4.fila())
+fila.adicionar(apartamento5.fila())
 print('Fila:')
 
 # Imprimir a fila
@@ -58,7 +67,9 @@ print(fila)
 print('\n')
 
 # Remover da fila
-fila.remover()
+print('Apartamento abaixo removido da lista!')
+print(fila.remover())
+print('\n')
 print('Fila:')
 print(fila)
 print('\n')
@@ -68,5 +79,5 @@ print(fila.retornar_topo())
 print('\n')
 
 # Tamanho da fila
-print(len(fila))
+print(f'Existem {len(fila)} apartamentos na fila')
 # =====================================================================================================================

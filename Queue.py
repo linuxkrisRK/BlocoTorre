@@ -3,7 +3,7 @@ Classe Queue
 O primeiro elemento a ser inserido deve ser o primeiro a ser removido!
 """
 from Node import Node
-
+from apartamento import Apartamento
 class Queue:
     def __init__(self):
         self.first = None
