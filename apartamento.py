@@ -1,5 +1,9 @@
 """
 Classe Apartamento
+
+Observação:
+- O id será auto incrementado como um serial;
+- E o número do Apartamento também, mas com um valor pré definido.
 """
 from Torre import Torre
 
@@ -8,13 +12,13 @@ class Apartamento(Torre):
     contador = 0
     numeroProg = 100
 
-    def __init__(self, nome=None, endereco=None, vaga=None, torre=None):
+    def __init__(self, nome=None, endereco=None, vaga=None, torre=None, apartamento=None):
         super().__init__(nome, endereco)
         self.__id = Apartamento.contador + 1
         self.__numero = Apartamento.numeroProg + 1
         self.__torre = torre
         self.__vaga = vaga
-        self.__proximo = Apartamento.numeroProg + 2
+        self.__proximo = apartamento
         Apartamento.contador += 1
         Apartamento.numeroProg += 1
 
@@ -47,19 +51,23 @@ class Apartamento(Torre):
         self.__proximo = novo_proximo
 
     @torre.setter
-    def torre(self, torreNome):
-        self.__torre = torreNome
+    def torre(self, torre_nome):
+        self.__torre = torre_nome
 
+    def imprimir_apartamento(self):
+        return f' Id: {self.id}'
 
     def imprimir(self):
+        if self.proximo is None:
+            return f'TORRE: {self.torre.imprimir()} \n' \
+                   f'APARTAMENTO Id: {self.id} || Numero: {self.numero} ||  Vaga: {self.vaga} ' \
+                   f'|| Proximo Apartamento: Nenhum ainda!'
+
         return f'TORRE: {self.torre.imprimir()} \n' \
                f'APARTAMENTO Id: {self.id} || Numero: {self.numero} ||  Vaga: {self.vaga} ' \
-               f'|| Proximo Apartamento: {self.proximo}'
+               f'|| Proximo Apartamento: {self.proximo.imprimir_apartamento()}'
 
-    def cadastrar_ape_torre(self, x, y, vaga):
-        Torre.cadastrar(self, x, y)
-        self.vaga = vaga
-
-    def cadastrar(self, torre, vaga):
+    def cadastrar(self, torre, vaga, proximo):
         self.vaga = vaga
         self.torre = torre
+        self.proximo = proximo

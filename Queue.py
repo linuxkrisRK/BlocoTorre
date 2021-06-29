@@ -56,7 +56,7 @@ class Queue:
             fila = ""
             pointer = self.first
             while(pointer):
-                fila = fila + str(pointer.data) + " - "
+                fila = fila + str(pointer.data) + " \n " + '\n'
                 pointer = pointer.next
             return fila
         return "Fila vazia!"
