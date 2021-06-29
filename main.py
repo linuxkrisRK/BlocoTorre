@@ -19,28 +19,33 @@ print('\n')
 # =====================================================================================================================
 # Apartamento
 apartamento1 = Apartamento()
-apartamento1.cadastrar(torre1, '12', None)
+apartamento1.cadastrar(torre1, '12')
 print(apartamento1.imprimir())
 print('\n')
 
 apartamento2 = Apartamento()
-apartamento2.cadastrar(torre2, '10', None)
+apartamento2.cadastrar(torre2, '10')
 print(apartamento2.imprimir())
 print('\n')
 
 apartamento3 = Apartamento()
-apartamento3.cadastrar(torre2, '14', apartamento2)
+apartamento3.cadastrar(torre2, '14')
 print(apartamento3.imprimir())
 print('\n')
 
 apartamento4 = Apartamento()
-apartamento4.cadastrar(torre2, '16', apartamento3)
+apartamento4.cadastrar(torre2, '16')
 print(apartamento4.imprimir())
 print('\n')
 
 apartamento5 = Apartamento()
-apartamento5.cadastrar(torre2, '22', apartamento4)
+apartamento5.cadastrar(torre2, '22')
 print(apartamento5.imprimir())
+print('\n')
+
+apartamento6 = Apartamento()
+apartamento6.cadastrar(torre2, '32')
+print(apartamento6.imprimir())
 print('\n')
 
 # =======================================================================
@@ -48,7 +53,7 @@ print('\n')
 apartamento2.atualizar_proximo(apartamento3)
 apartamento3.atualizar_proximo(apartamento4)
 apartamento4.atualizar_proximo(apartamento5)
-apartamento5.atualizar_proximo(apartamento5)
+apartamento5.atualizar_proximo(apartamento6)
 
 # =====================================================================================================================
 
@@ -60,10 +65,15 @@ fila.adicionar(apartamento2.fila())
 fila.adicionar(apartamento3.fila())
 fila.adicionar(apartamento4.fila())
 fila.adicionar(apartamento5.fila())
+fila.adicionar(apartamento6.fila())
 print('Fila:')
 
 # Imprimir a fila
 print(fila)
+print('\n')
+
+# Tamanho da fila
+print(f'Existem {len(fila)} apartamentos na fila')
 print('\n')
 
 # Remover da fila
@@ -74,10 +84,13 @@ print('Fila:')
 print(fila)
 print('\n')
 
+# Tamanho da fila
+print(f'Existem {len(fila)} apartamentos na fila')
+print('\n')
+
 # Mostrar o primeiro elemento da fila
+print('Topo da fila!')
 print(fila.retornar_topo())
 print('\n')
 
-# Tamanho da fila
-print(f'Existem {len(fila)} apartamentos na fila')
 # =====================================================================================================================
